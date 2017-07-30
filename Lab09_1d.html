@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="jquery/jquery-2.1.4.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        type: 'POST',
+        url: 'L8-ppt13.php',
+        dataType: 'json',
+        success: function (result) {
+         $('#caption').html('<h2>Display data in table</h2>');
+         table = $('#tableID');
+          tr = $('<tr>');
+          	tr.append($('<th>').text("Title"));
+   		      	tr.append($('<th>').text("Genre"));
+      					 table.find('thead').append(tr);
+           					$.each(result, function (index, value) {
+             					alert(value.title + ',' + value.genre)
+          })
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <p id="caption"></p>
+  <table id="tableID" border="1" width="30%">
+    <thead></thead>
+    <tbody></tbody>
+  </table>
+</body>
+</html>
+
